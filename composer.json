@@ -59,7 +59,7 @@
             "dont-discover": []
         }
     },
-    "config": {
+"config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
@@ -69,7 +69,8 @@
         },
         "platform": {
             "ext-zip": "8.2"
-        }
+        },
+        "ignore-platform-reqs": true
     },
     "minimum-stability": "stable",
     "prefer-stable": true
