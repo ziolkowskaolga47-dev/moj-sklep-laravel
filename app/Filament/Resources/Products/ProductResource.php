@@ -12,9 +12,9 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
     protected static ?string $navigationLabel = 'Produkty';
 
-    public static function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
+public static function form(\Filament\Forms\Form $form): \Filament\Forms\Form
     {
-        return \App\Filament\Resources\Products\Schemas\ProductForm::configure($schema);
+        return \App\Filament\Resources\Products\Schemas\ProductForm::configure($form);
     }
 
     public static function table(\Filament\Tables\Table $table): \Filament\Tables\Table

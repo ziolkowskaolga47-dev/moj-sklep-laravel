@@ -11,31 +11,30 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationLabel = 'Kategorie';
 
     protected static ?string $pluralModelLabel = 'Kategorie';
 
     // Używamy \Filament\Schemas\Schema, bo Form u Ciebie nie działa (zgodnie ze screenem 2)
-    public static function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
+public static function form(\Filament\Forms\Form $form): \Filament\Forms\Form
     {
-        return $schema
-            ->components([
+        return $form
+            ->schema([
                 \Filament\Forms\Components\TextInput::make('name')
                     ->label('Nazwa kategorii')
                     ->required()
                     ->live(onBlur: true)
                     ->afterStateUpdated(function ($set, ?string $state) {
-                        $set('slug', Str::slug($state));
+                        $set('slug', \Illuminate\Support\Str::slug($state));
                     }),
                 
                 \Filament\Forms\Components\TextInput::make('slug')
                     ->label('Slug (Link)')
                     ->required()
                     ->unique(ignoreRecord: true),
-            ])
-            ->statePath('data');
+            ]);
     }
 
     public static function table(\Filament\Tables\Table $table): \Filament\Tables\Table
