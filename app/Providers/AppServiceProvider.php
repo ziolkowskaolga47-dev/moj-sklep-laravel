@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; // Pamiętaj o dodaniu tej linii na górze pliku!
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Wymuś HTTPS na środowisku produkcyjnym (Railway)
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
