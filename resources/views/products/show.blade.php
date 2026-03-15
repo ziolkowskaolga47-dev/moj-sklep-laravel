@@ -33,7 +33,7 @@
         </script>
     @endif
 
-    {{-- NAVBAR --}}
+    {{-- NOWY NAVBAR --}}
     <nav class="bg-white border-b border-gray-100 h-20 flex items-center px-6 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto w-full flex items-center">
             <a href="/" class="group flex items-center active:scale-95 transition-transform">
@@ -67,11 +67,10 @@
                 <h1 class="text-4xl font-black mb-6 text-gray-900 tracking-tight">{{ $product->name }}</h1>
                 <p class="text-gray-500 text-lg leading-relaxed mb-10">{{ $product->description }}</p>
 
-                {{-- POPRAWIONA SEKCJA CENY --}}
                 <div class="bg-gray-50 p-8 rounded-3xl mb-10 border border-gray-100">
                     <p class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-2">Cena produktu</p>
                     <div class="flex items-baseline gap-2">
-                        <span class="text-5xl font-black text-red-600">{{ number_format($product->price, 2, ',', ' ') }}</span>
+                        <span class="text-5xl font-black text-red-600">{{ number_format($product->price, 2) }}</span>
                         <span class="text-xl font-bold text-red-600">PLN</span>
                     </div>
                 </div>
