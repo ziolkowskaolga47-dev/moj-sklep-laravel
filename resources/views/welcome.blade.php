@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mój Sklep</title>
+    <title>MOJ.SKLEP - Najlepsze Produkty</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
 
     {{-- SEKCJA POWIADOMIEŃ --}}
     @if(session('success'))
-        <div class="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-full max-w-xl px-6">
+        <div class="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-full max-w-xl px-6 transition-all duration-500">
             <div class="bg-green-600 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center justify-between animate-bounce">
                 <div class="flex items-center gap-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <span class="font-bold">{{ session('success') }}</span>
                 </div>
                 <button onclick="this.parentElement.parentElement.remove()" class="hover:opacity-70 transition-opacity">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
             </div>
         </div>
@@ -26,7 +26,6 @@
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-12">
-                {{-- NOWE, PROSTE LOGO: MOJ.SKLEP --}}
                 <a href="/" class="group flex items-center active:scale-95 transition-transform">
                     <span class="text-2xl font-black text-gray-900 tracking-tighter uppercase">
                         MOJ<span class="text-red-600">.</span>SKLEP
@@ -51,16 +50,11 @@
                             <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Witaj,</span>
                             <span class="text-sm font-black text-gray-900">{{ Auth::user()->name }}</span>
                         </div>
-                        
                         <div class="flex items-center gap-2">
-                            <a href="{{ route('profile.edit') }}" class="text-[10px] font-bold bg-gray-100 text-gray-600 px-3 py-2 rounded-xl hover:bg-gray-200 transition-colors uppercase">
-                                Profil
-                            </a>
+                            <a href="{{ route('profile.edit') }}" class="text-[10px] font-bold bg-gray-100 text-gray-600 px-3 py-2 rounded-xl hover:bg-gray-200 transition-colors uppercase">Profil</a>
                             <form method="POST" action="{{ route('logout') }}" class="inline">
                                 @csrf
-                                <button type="submit" class="text-[10px] font-bold bg-red-50 text-red-600 px-3 py-2 rounded-xl hover:bg-red-100 transition-colors uppercase">
-                                    Wyloguj
-                                </button>
+                                <button type="submit" class="text-[10px] font-bold bg-red-50 text-red-600 px-3 py-2 rounded-xl hover:bg-red-100 transition-colors uppercase">Wyloguj</button>
                             </form>
                         </div>
                     </div>
@@ -86,7 +80,7 @@
                     @if(request('category'))
                         Kategoria: {{ $categories->firstWhere('slug', request('category'))->name ?? 'Produkty' }}
                     @else
-                        Produkty
+                        Nasze Produkty
                     @endif
                 </h1>
                 <p class="text-gray-500 mt-2">Znaleziono {{ $products->count() }} produktów</p>
@@ -122,7 +116,6 @@
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                              onerror="this.onerror=null;this.src='{{ asset('images/geralt.jpg') }}'">
                         
-                        {{-- STARY, CZERWONY DESIGN PLAKIETKI --}}
                         <div class="absolute top-4 left-4">
                             <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1.5 rounded-xl uppercase tracking-widest shadow-lg">Nowość</span>
                         </div>
@@ -144,9 +137,10 @@
                         
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Cena Brutto</p>
+                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Cena</p>
                                 <p class="text-3xl font-black text-red-600">
-                                    {{ number_format($product->price_brutto ?? $product->price, 2) }} <span class="text-lg">PLN</span>
+                                    {{-- TUTAJ POPRAWKA: Używamy tylko price i polskiego formatu --}}
+                                    {{ number_format($product->price, 2, ',', ' ') }} <span class="text-lg">PLN</span>
                                 </p>
                             </div>
                             
