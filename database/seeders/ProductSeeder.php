@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             ['name' => 'Kolekcjonerskie']
         );
 
-        // Lista produktów z Twojego zdjęcia
+        // Lista produktów z dopisanymi zdjęciami
         $products = [
             [
                 'category_id' => $catKolekcjonerskie->id,
@@ -38,6 +38,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 5,
                 'sku' => 'GER-RON-001',
+                'image' => 'geralt.jpg', // <--- dodane zdjęcie
             ],
             [
                 'category_id' => $catGry->id,
@@ -48,6 +49,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 50,
                 'sku' => 'FORT-VD-5000',
+                'image' => 'vbucks.jpg', // <--- dodane zdjęcie
             ],
             [
                 'category_id' => $catGry->id,
@@ -58,6 +60,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 100,
                 'sku' => 'ER-DLC-SHADOW',
+                'image' => 'elden.jpg', // <--- dodane zdjęcie
             ],
             [
                 'category_id' => $catElektronika->id,
@@ -68,6 +71,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 20,
                 'sku' => 'HW-EAR-G300',
+                'image' => 'headphones.jpg', // <--- dodane zdjęcie
             ],
             [
                 'category_id' => $catElektronika->id,
@@ -78,6 +82,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 15,
                 'sku' => 'HW-KBD-MECH',
+                'image' => 'keyboard.jpg', // <--- dodane zdjęcie
             ],
             [
                 'category_id' => $catElektronika->id,
@@ -88,6 +93,7 @@ class ProductSeeder extends Seeder
                 'vat_rate' => 23,
                 'stock' => 30,
                 'sku' => 'HW-MSE-WIRE',
+                'image' => 'mouse.jpg', // <--- dodane zdjęcie
             ],
         ];
 
