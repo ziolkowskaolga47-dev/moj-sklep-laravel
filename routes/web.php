@@ -20,7 +20,7 @@ Route::post('/checkout/process', [CheckoutController::class, 'store'])->name('ch
 
 // Reszta tras Breeze
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
