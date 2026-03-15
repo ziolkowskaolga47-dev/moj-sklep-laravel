@@ -70,7 +70,9 @@
                 <div class="bg-gray-50 p-8 rounded-3xl mb-10 border border-gray-100">
                     <p class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-2">Cena produktu</p>
                     <div class="flex items-baseline gap-2">
-                        <span class="text-5xl font-black text-red-600">{{ number_format($product->price, 2) }}</span>
+                        <span class="text-5xl font-black text-red-600">
+    {{ number_format($product->price, 2, ',', ' ') }}
+</span>
                         <span class="text-xl font-bold text-red-600">PLN</span>
                     </div>
                 </div>
