@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $product->name }} - Sklep</title>
+    <title>{{ $product->name }} - MOJ.SKLEP</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
@@ -33,10 +33,15 @@
         </script>
     @endif
 
+    {{-- NOWY NAVBAR --}}
     <nav class="bg-white border-b border-gray-100 h-20 flex items-center px-6 sticky top-0 z-50">
-        <a href="/" class="flex items-center gap-2 font-black text-xl tracking-tighter">
-            <div class="bg-red-600 text-white px-3 py-1 rounded-xl">S</div> klep
-        </a>
+        <div class="max-w-6xl mx-auto w-full flex items-center">
+            <a href="/" class="group flex items-center active:scale-95 transition-transform">
+                <span class="text-2xl font-black text-gray-900 tracking-tighter uppercase">
+                    MOJ<span class="text-red-600">.</span>SKLEP
+                </span>
+            </a>
+        </div>
     </nav>
 
     <div class="max-w-6xl mx-auto px-6 py-12">
