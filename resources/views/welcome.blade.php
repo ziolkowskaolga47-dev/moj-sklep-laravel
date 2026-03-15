@@ -100,14 +100,16 @@
             @forelse($products as $product)
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                     <a href="{{ route('products.show', $product->id) }}" class="block aspect-square bg-gray-100 overflow-hidden relative group">
-                        {{-- TUTAJ POPRAWKA DLA OBRAZKÓW --}}
                         <img src="{{ asset('images/' . ($product->image ?? 'geralt.jpg')) }}" 
                              alt="{{ $product->name }}" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                              onerror="this.onerror=null;this.src='{{ asset('images/geralt.jpg') }}'">
                         
+                        {{-- POPRAWIONA PLAKIETKA --}}
                         <div class="absolute top-4 left-4">
-                            <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1.5 rounded-xl uppercase tracking-widest shadow-lg">Nowość</span>
+                            <span class="bg-red-600 text-white text-[9px] font-black px-3 py-1.5 rounded-lg uppercase tracking-[0.15em] shadow-md border border-red-500">
+                                Nowości
+                            </span>
                         </div>
                     </a>
 
