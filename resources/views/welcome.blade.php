@@ -43,9 +43,24 @@
 
             <div class="flex items-center gap-6">
                 @auth
-                    <div class="flex flex-col items-end">
-                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Witaj,</span>
-                        <span class="text-sm font-black text-gray-900">{{ Auth::user()->name }}</span>
+                    {{-- ZMODYFIKOWANA SEKCJA UŻYTKOWNIKA --}}
+                    <div class="flex items-center gap-4 border-r border-gray-100 pr-6">
+                        <div class="flex flex-col items-end">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Witaj,</span>
+                            <span class="text-sm font-black text-gray-900">{{ Auth::user()->name }}</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <a href="{{ route('profile.edit') }}" class="text-[10px] font-bold bg-gray-100 text-gray-600 px-3 py-2 rounded-xl hover:bg-gray-200 transition-colors uppercase tracking-tight">
+                                Profil
+                            </a>
+                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                @csrf
+                                <button type="submit" class="text-[10px] font-bold bg-red-50 text-red-600 px-3 py-2 rounded-xl hover:bg-red-100 transition-colors uppercase tracking-tight">
+                                    Wyloguj
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 @else
                     <a href="{{ route('login') }}" class="text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors">Zaloguj</a>
@@ -105,7 +120,7 @@
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                              onerror="this.onerror=null;this.src='{{ asset('images/geralt.jpg') }}'">
                         
-                        {{-- POPRAWIONA PLAKIETKA --}}
+                        {{-- POPRAWIONA PLAKIETKA NOWOŚCI --}}
                         <div class="absolute top-4 left-4">
                             <span class="bg-red-600 text-white text-[9px] font-black px-3 py-1.5 rounded-lg uppercase tracking-[0.15em] shadow-md border border-red-500">
                                 Nowości
