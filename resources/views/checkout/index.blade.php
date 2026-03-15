@@ -29,14 +29,17 @@
         
         {{-- NAGŁÓWEK --}}
         <div class="mb-10 flex items-center justify-between">
-            <div class="flex items-center gap-1">
-                <a href="/" class="flex items-center gap-1">
-                    <div class="bg-red-600 text-white font-black text-xl px-3 py-1.5 rounded-xl tracking-tighter">S</div>
-                    <span class="text-2xl font-black text-gray-900 tracking-tighter ml-0.5">klep</span>
-                </a>
-            </div>
-            <h1 class="text-2xl font-black text-gray-900 uppercase tracking-tight">Zamówienie</h1>
-        </div>
+
+<div class="mb-10 flex items-center justify-between">
+    <a href="/" class="group flex items-center active:scale-95 transition-transform">
+        <span class="text-2xl font-black text-gray-900 tracking-tighter uppercase">
+            MOJ<span class="text-red-600">.</span>SKLEP
+        </span>
+    </a>
+    <h1 class="text-xl font-black text-gray-400 uppercase tracking-widest border-l border-gray-200 pl-6 hidden md:block">
+        Zamówienie
+    </h1>
+</div>
 
         <form action="{{ route('checkout.process') }}" method="POST" class="space-y-6">
             @csrf
